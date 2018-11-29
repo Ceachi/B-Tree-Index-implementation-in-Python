@@ -7,3 +7,9 @@ Observation:
 - a node in the B-tree is <key, value> where key =  is the key we are looking for and value = is the page number where the key exist
 
 Database = is just a simple array in this example
+
+### How to test the program:
+1. Clone this repository
+2. Open command line in the directory of the folder, and use the following command with 2 additionally parameters:
+                ```python main_run.py array_size key``` => ```python main_run.py 100 19```
+               
