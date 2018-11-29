@@ -15,16 +15,18 @@ Database = is just a simple array in this example
 author: Ceachi Bogdan
 """
 class Main:
-    DATABASE_SIZE = 100
-    database = [None] * DATABASE_SIZE # just the sorted array where we will try to find the keys
-    pageSize = 4 # we divide the array into dimensions of pageSize
-    btree = Btree()
-    key = 19  # we are trying to find this key in the database array
+    def __init__(self, database_size, key):
+        self.DATABASE_SIZE = database_size
+        self.database = [None] * self.DATABASE_SIZE  # just the sorted array where we will try to find the keys
+        self.pageSize = 4  # we divide the array into dimensions of pageSize
+        self.btree = Btree()
+        self.key = key  # we are trying to find this key in the database array
+
     def run(self):
         self.constructDatabase()
         self.printDatabase()
         self.constructInitialBTree()
-        print(" We are trying to find the position of key = ", self.key, "in the array")
+        print("We are trying to find the position of key =", self.key, "in the array")
         print("Page number where the key might exist = ", self.btree.search(self.key))
         pos = self.btree.search(self.key) # after the search of the key in B-Tree, we get the pageNumber where the key exist
         print("Position of the key in array is =", self.binarySearch(self.database, pos, pos+self.pageSize-1, self.key))
@@ -70,6 +72,3 @@ class Main:
                 return self.binarySearch(arr, mid + 1, r, x)
         else:
             return -1
-
-program = Main()
-program.run()
